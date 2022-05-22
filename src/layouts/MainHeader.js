@@ -98,7 +98,7 @@ const MainHeader = () => {
         backgroundColor: theme.palette.header,
       }}
     >
-      <Box className="container">
+      <Box className="header-container">
         <Box className="logo" sx={{ m: "0.5rem", mb: "1rem" }}>
           <Logo sx={{ height: "2.5rem" }} />
           <Typography
