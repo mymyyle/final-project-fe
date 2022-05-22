@@ -90,6 +90,7 @@ const MainHeader = () => {
   const colorMode = useContext(ColorModeContext);
   return (
     <Box
+      id="nav"
       sx={{
         position: "fixed",
         zIndex: 100,
@@ -97,7 +98,7 @@ const MainHeader = () => {
         backgroundColor: theme.palette.header,
       }}
     >
-      <Box className="header-container">
+      <div className="header-container">
         <Box className="logo" sx={{ m: "0.5rem", mb: "1rem" }}>
           <Logo sx={{ height: "2.5rem" }} />
           <Typography
@@ -177,7 +178,7 @@ const MainHeader = () => {
             </Box>
           </ListItem>
         </List>
-      </Box>
+      </div>
     </Box>
   );
 };

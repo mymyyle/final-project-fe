@@ -1,71 +1,73 @@
-@import "../styles/variables";
+@import "../index.scss";
 
-.header-container {
-  max-width: $max-width;
-  margin: 0 auto;
-  overflow: hidden;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 1rem;
-  padding: 1rem;
-  text-align: center;
-  font-weight: bold;
-  position: sticky;
-  top: 0;
-  z-index: 2;
-  margin-bottom: 2px;
-
-  .logo {
+#nav {
+  .header-container {
+    max-width: $max-width;
+    margin: 0 auto;
+    overflow: hidden;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    font-size: 2rem;
+    font-size: 1rem;
+    padding: 1rem;
+    text-align: center;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    margin-bottom: 2px;
 
-    .red {
-      color: $primary-color;
-    }
-  }
+    .logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
 
-  .ul {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .li {
-      .btn {
-        color: inherit;
-        // background: $white;
-        padding: 0.75rem;
-        border: 1px solid transparent;
-        margin-right: 1px;
-
-        &:hover {
-          border-bottom: 1px solid $primary-color;
-        }
-      }
-
-      .selected {
-        color: $white;
-        background: $primary-color;
-        border-bottom: none;
-      }
-
-      .btn-post {
-        border-color: $secondary-color;
-        box-shadow: rgba(255, 238, 0, 0.51) 0px 2px 2px,
-          rgba(250, 208, 1, 0.558) 0px 0px 2px 2px;
-        border-radius: 0.75rem;
-
-        &:hover {
-          background-color: #ffaf40;
-          font-weight: 600;
-        }
+      .red {
+        color: $primary-color;
       }
     }
-  }
-  @media only screen and (max-width: 768px) {
-    flex-direction: column;
-    padding: 1.2rem;
+
+    .ul {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .li {
+        .btn {
+          color: inherit;
+          // background: $white;
+          padding: 0.75rem;
+          border: 1px solid transparent;
+          margin-right: 1px;
+
+          &:hover {
+            border-bottom: 1px solid $primary-color;
+          }
+        }
+
+        .selected {
+          color: $white;
+          background: $primary-color;
+          border-bottom: none;
+        }
+
+        .btn-post {
+          border-color: $secondary-color;
+          box-shadow: rgba(255, 238, 0, 0.51) 0px 2px 2px,
+            rgba(250, 208, 1, 0.558) 0px 0px 2px 2px;
+          border-radius: 0.75rem;
+
+          &:hover {
+            background-color: #ffaf40;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+    @media only screen and (max-width: 768px) {
+      flex-direction: column;
+      padding: 1.2rem;
+    }
   }
 }
