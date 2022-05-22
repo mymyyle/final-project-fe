@@ -90,7 +90,6 @@ const MainHeader = () => {
   const colorMode = useContext(ColorModeContext);
   return (
     <Box
-      id="nav"
       sx={{
         position: "fixed",
         zIndex: 100,
