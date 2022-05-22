@@ -1,0 +1,58 @@
+@import "../index.scss";
+
+#main-footer {
+  background: $dark-color;
+  color: $white;
+  padding: 2rem 1rem;
+  .logo {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    font-size: 1.5rem;
+
+    .red {
+      color: $primary-color;
+    }
+  }
+
+  a {
+    color: $white;
+    &:hover {
+      color: $primary-color;
+    }
+  }
+  p {
+    margin-bottom: 0.5rem;
+  }
+  .footer-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 2rem;
+
+    input[type="email"] {
+      width: 90%;
+      padding: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    input[type="submit"] {
+      width: 90%;
+      margin-bottom: 0.5rem;
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    .footer-container {
+      display: flex;
+      flex-direction: column;
+
+      & > div {
+        border-bottom: #555 dotted 1px;
+      }
+
+      .list li,
+      div:last-child {
+        border-bottom: transparent dotted 1px;
+      }
+    }
+  }
+}

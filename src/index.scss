@@ -1,0 +1,70 @@
+@import "styles/variables";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Be Vietnam Pro", sans-serif;
+  background: $light-color;
+  line-height: 1.5;
+  overflow-x: hidden;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  max-width: $max-width;
+  margin: auto;
+  padding: 0 2rem;
+  overflow: hidden;
+}
+
+.btn {
+  display: inline-block;
+  border: none;
+  // background: $dark-color;
+  color: $white;
+  padding: 0.5rem 1.5rem;
+  &-light {
+    background: $light-color;
+  }
+  &-primary {
+    background: $primary-color;
+  }
+  &-secondary {
+    background: $secondary-color;
+  }
+  &:hover {
+    cursor: pointer;
+    opacity: 0.9;
+  }
+}
+
+.list li {
+  padding: 0.5rem 0;
+  border-bottom: #555 dotted 1px;
+  width: 90%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0.55rem;
+  line-height: 1.3;
+}
