@@ -104,7 +104,7 @@ const PostJob = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        margin: { lg: "1rem auto", sm: "1rem 0rem" },
+        margin: { lg: "1rem auto", xs: "1rem 0rem" },
       }}
     >
       <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>

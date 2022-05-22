@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+# VolunCheers FE
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Description
 
-## Available Scripts
+VolunCheers is an easy-to-use system that engages, tracks, and manages volunteers in service to their communities. User easily post and apply for a job or leave a question about what they want to know more about that job. They can see a list of jobs that they have posted attached with the job’s candidate list. User can update their profile and manage their application.
 
-In the project directory, you can run:
+# Feature (User Story)
 
-### `npm start`
+## authentication
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. New User can register for a new account with name, email, password.
+2. User have to log in with email and password
+3. User stay logged in with refreshing page
+4. On the profile page, user can see: name , avatar, about me
+5. User can switch tabs between
+   1. update profile: can edit all information (including password)
+   2. Jobs: list of job which user created + filter by name
+   3. applications: list of application which user applied +filter by status "pending", "approved" , "rejected"
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Job
 
-### `npm test`
+1. user can see homepage with carousel and some fearturing job
+2. user can see list all of job: search, filter,pagination
+3. user can click to see more detail about job and Q&A of job
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Create job
 
-### `npm run build`
+1. User can create a new job. User can see the detail job after successfully created
+2. author can edit job
+3. author can update job
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Q&A
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. User can take a question on a job detail page. User can see the comment after successfully created.
+2. User can edit comment if author haven't replied yet
+3. User can delete comment
+4. Employer can answer each question. All user can see an answer after successfully created.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## respond request
 
-### `npm run eject`
+1. user can apply job with message in page detail+manage application in account page
+2. user can cancel application in page detail+ account page
+3. employer can respond "approved" , "rejected" application
+4. when approved, secret message will be appeared in application of candidate
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Map
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. User can search job by map
+2. User can locate their browser to find job near them
+3. User can locate click on job card and see its location
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Donation
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. user can donate by 2 gateways:MoMo, Paypal
 
-## Learn More
+## Theme
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. user can choose dark mode or light mode in header
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Stats
 
-### Code Splitting
+1. User can see the number of volunteer and job are available in homepage
+2. user can click chart icon and see the bar chart of status application in first fifth month in 2022
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+# Link to demo
 
-### Analyzing the Bundle Size
+https://voluncheer.herokuapp.com/
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# Link to API
 
-### Making a Progressive Web App
+https://voluncheer-api.herokuapp.com/
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+# mock demo account sign-in info.
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ID: my.le@gmail.com
+password: 12345a

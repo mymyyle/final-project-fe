@@ -44,7 +44,7 @@ const CarouselStats = ({ text, totalNumber = 0 }) => {
           textAlign: "center",
           p: "1.25rem 0.75rem",
           width: { md: "15vw", sm: "35vw" },
-          height: { md: "26vh", sm: "13.5vh" },
+          height: { md: "26vh", sm: "15vh" },
           bgcolor: "white",
           color: theme.palette.main,
           transition: "all 0.5s ease",

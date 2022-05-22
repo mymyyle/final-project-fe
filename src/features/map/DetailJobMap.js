@@ -2,13 +2,10 @@ import React, { useEffect, useState } from "react";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import { useSelector } from "react-redux";
 import mapStyles from "./mapStyles";
+import { useTheme } from "@emotion/react";
+import { useMediaQuery } from "@mui/material";
 
 const libraries = ["places"];
-
-const mapContainerStyle = {
-  width: "22vw",
-  height: "30vh",
-};
 
 const options = {
   styles: mapStyles,
@@ -27,6 +24,14 @@ const DetailJobMap = () => {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
   });
+
+  const theme = useTheme();
+  const matchesMd = useMediaQuery(theme.breakpoints.up("md"));
+  const matchesSm = useMediaQuery(theme.breakpoints.up("sm"));
+  const mapContainerStyle = {
+    width: matchesMd ? "24vw" : matchesSm ? "30vw" : "85vw",
+    height: "30vh",
+  };
 
   const [renderMarker, setRenderMarker] = useState(false);
   useEffect(() => {
