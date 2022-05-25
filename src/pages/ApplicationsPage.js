@@ -120,7 +120,10 @@ const ApplicationsPage = () => {
                   "&:last-child td, &:last-child th": { border: 0 },
                 }}
               >
-                <ApplicationRow application={application} />
+                <ApplicationRow
+                  application={application}
+                  jobStatus={location?.state?.jobStatus}
+                />
               </TableRow>
             ))}
           </TableBody>

@@ -1,14 +1,47 @@
-import { Avatar, Button, Chip, TableCell, Typography } from "@mui/material";
+import {
+  Avatar,
+  Button,
+  Chip,
+  Modal,
+  TableCell,
+  Typography,
+} from "@mui/material";
 import { Box } from "@mui/system";
-import React from "react";
+import React, { useState } from "react";
 import { startCase, toLower } from "lodash";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { respondRequest } from "./applicationSlice";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import CancelIcon from "@mui/icons-material/Cancel";
-const ApplicationRow = ({ application }) => {
-  const { candidateId: candidate, message, status, jobId: job } = application;
+import RatingForm from "features/rating/RatingForm";
+
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: { xs: 350, sm: 500 },
+  height: { sm: 300 },
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+  borderRadius: "10px",
+};
+
+const ApplicationRow = ({ application, jobStatus }) => {
+  const [openRating, setOpenRating] = useState(false);
+  const handleOpenRating = () => setOpenRating(true);
+  const handleCloseRating = () => setOpenRating(false);
+
+  const {
+    candidateId: candidate,
+    message,
+    status,
+    jobId: job,
+    isEmployerRated,
+  } = application;
   const navigate = useNavigate();
   const handleClickName = () => {
     navigate(`/user/${candidate._id}`);
@@ -18,7 +51,7 @@ const ApplicationRow = ({ application }) => {
   const handleResponse = (request) => {
     dispatch(respondRequest(request, candidate._id, job._id));
   };
-
+  console.log("application", application);
   return (
     <>
       <TableCell>
@@ -61,47 +94,76 @@ const ApplicationRow = ({ application }) => {
           <Chip icon={<CancelIcon />} label="Rejected" color="error" />
         )}
       </TableCell>
-      <TableCell align="right">
-        {status === "pending" ? (
-          <>
-            {" "}
-            <Button
-              onClick={() => handleResponse("approved")}
-              variant="outlined"
-              sx={{ mr: "2px", textTransform: "none" }}
-            >
-              Approve
-            </Button>
+      {/* action */}
+      {jobStatus === "ongoing" ? (
+        <TableCell align="right">
+          {status === "pending" ? (
+            <>
+              {" "}
+              <Button
+                onClick={() => handleResponse("approved")}
+                variant="outlined"
+                sx={{ mr: "2px", textTransform: "none" }}
+              >
+                Approve
+              </Button>
+              <Button
+                color="error"
+                onClick={() => handleResponse("rejected")}
+                variant="outlined"
+                sx={{ textTransform: "none" }}
+              >
+                Reject
+              </Button>
+            </>
+          ) : status === "approved" ? (
             <Button
               color="error"
               onClick={() => handleResponse("rejected")}
+              // variant="contained"
               variant="outlined"
               sx={{ textTransform: "none" }}
             >
               Reject
             </Button>
-          </>
-        ) : status === "approved" ? (
+          ) : (
+            <Button
+              onClick={() => handleResponse("approved")}
+              // variant="contained"
+              variant="outlined"
+              sx={{ mr: "2px", textTransform: "none" }}
+            >
+              Approve
+            </Button>
+          )}
+        </TableCell>
+      ) : status === "approved" ? (
+        <TableCell align="right">
           <Button
-            color="error"
-            onClick={() => handleResponse("rejected")}
-            // variant="contained"
             variant="outlined"
-            sx={{ textTransform: "none" }}
-          >
-            Reject
-          </Button>
-        ) : (
-          <Button
-            onClick={() => handleResponse("approved")}
-            // variant="contained"
-            variant="outlined"
+            onClick={handleOpenRating}
+            disabled={isEmployerRated}
             sx={{ mr: "2px", textTransform: "none" }}
           >
-            Approve
+            Rating
           </Button>
-        )}
-      </TableCell>
+          <Modal
+            open={openRating}
+            onClose={handleCloseRating}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <Box sx={style}>
+              <RatingForm
+                acceptor={candidate}
+                type="employee"
+                jobId={job._id}
+                handleCloseRating={handleCloseRating}
+              />
+            </Box>
+          </Modal>
+        </TableCell>
+      ) : null}
     </>
   );
 };

@@ -1,6 +1,16 @@
-import { Avatar, Box, Card, Container, Typography } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Card,
+  Container,
+  Divider,
+  Rating,
+  Stack,
+  Typography,
+} from "@mui/material";
 import React from "react";
 import PersonIcon from "@mui/icons-material/Person";
+import ProfileCardStats from "./ProfileCardStats";
 
 const Profile = ({ user }) => {
   return (
@@ -12,6 +22,7 @@ const Profile = ({ user }) => {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
+            mb: "1rem",
           }}
         >
           <Box
@@ -52,6 +63,8 @@ const Profile = ({ user }) => {
           <Typography variant="h4">{user.name}</Typography>
           <Typography variant="h6">{user.email}</Typography>
         </Box>
+
+        <ProfileCardStats user={user} />
 
         <Typography
           sx={{ textIndent: "50px", textAlign: "justify", m: "1rem 0" }}

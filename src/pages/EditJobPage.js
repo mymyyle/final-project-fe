@@ -65,7 +65,7 @@ const EditJobPage = () => {
       imageUrl: currentJob.imageUrl,
       detailedInformation: currentJob.detailedInformation,
       category: currentJob.category,
-      status: "ongoing",
+      status: currentJob.status === "ongoing" ? "ongoing" : "closed",
     });
     setLocation(currentJob.location);
 
@@ -94,6 +94,7 @@ const EditJobPage = () => {
 
   const onSubmit = async (data) => {
     console.log("submit district", district);
+
     dispatch(
       editJob(jobId, {
         ...data,

@@ -3,7 +3,6 @@ import { TextField } from "@mui/material";
 
 function FTextField({ name, ...other }) {
   const { control } = useFormContext();
-  console.log("other", other);
   return (
     <Controller
       name={name}

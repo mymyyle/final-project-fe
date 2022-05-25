@@ -8,7 +8,7 @@ import { LoadingButton } from "@mui/lab";
 
 import { useDispatch, useSelector } from "react-redux";
 import { createComment } from "./commentSlice";
-import { useParams } from "react-router-dom";
+
 import SendIcon from "@mui/icons-material/Send";
 
 const NewCommentSchema = Yup.object().shape({

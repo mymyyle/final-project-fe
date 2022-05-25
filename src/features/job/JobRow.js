@@ -21,7 +21,9 @@ export const JobRow = ({ job }) => {
     navigate(`/job/edit/${jobId}`);
   };
   const navigateToListApplicationOfJob = (jobId) => {
-    navigate(`/applications/${jobId}`, { state: { jobName: job.name } });
+    navigate(`/applications/${jobId}`, {
+      state: { jobName: job.name, jobStatus: job.status },
+    });
   };
   const navigateToDetailJobPage = (jobId) => {
     navigate(`job/${jobId}`);

@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import apiService from "app/apiService";
 import { stringify } from "query-string";
-import { useNavigate } from "react-router-dom";
 import { cloudinaryUpload } from "utils/cloudinary";
 
 const initialState = {
@@ -139,6 +138,7 @@ export const editJob =
     dispatch(slice.actions.startLoading());
     let status, img;
     if (data.status !== "ongoing") status = "done";
+    else status = "ongoing";
 
     if (imageUrl instanceof File) {
       img = await cloudinaryUpload(imageUrl);

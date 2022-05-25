@@ -76,7 +76,7 @@ const DetailsJob = () => {
             <Typography variant="h5">Description</Typography>
             <Box
               variant="body1"
-              sx={{ textIndent: "50px", textAlign: "justify" }}
+              sx={{ textIndent: "50px", textAlign: "justify", lineHeight: 1.7 }}
             >
               {description}
             </Box>
