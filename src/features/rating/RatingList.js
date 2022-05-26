@@ -3,12 +3,13 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import RatingCard from "./RatingCard";
 import { getRatingListByUserId } from "./ratingSlice";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const LIMIT = 3;
 
 const RatingList = ({ user, type }) => {
   const [page, setPage] = useState(1);
-  const { ratingList, totalPages, totalRatings } = useSelector(
+  const { isLoading, ratingList, totalPages, totalRatings } = useSelector(
     (state) => state.rating
   );
 
@@ -27,6 +28,12 @@ const RatingList = ({ user, type }) => {
     dispatch(getRatingListByUserId(data));
   }, [page]);
 
+  if (isLoading)
+    return (
+      <Stack justifyContent="center" alignItems="center">
+        <CircularProgress />
+      </Stack>
+    );
   return (
     <Stack spacing={2} sx={{ mt: "1rem" }}>
       {!ratingList.length && (

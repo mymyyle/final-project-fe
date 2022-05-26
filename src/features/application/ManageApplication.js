@@ -17,14 +17,14 @@ import { getAllOwnApplication } from "features/application/applicationSlice";
 import OwnApplicationRow from "features/application/OwnApplicationRow";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import CircularProgress from "@mui/material/CircularProgress";
 const ManageApplication = () => {
   const [filterName, setFilterName] = useState("");
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
   const dispatch = useDispatch();
-  const { applicationList, totalApplications } = useSelector(
+  const { applicationList, totalApplications, isLoading } = useSelector(
     (state) => state.application
   );
 
@@ -86,28 +86,35 @@ const ManageApplication = () => {
             onRowsPerPageChange={handleChangeRowsPerPage}
           />
         </Stack>
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell>Opportunity's Name</TableCell>
-                <TableCell align="right">Created At</TableCell>
-                <TableCell align="right">Application's Status</TableCell>
-                <TableCell align="right">Action</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {applicationList?.map((application) => (
-                <TableRow
-                  key={application._id}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
-                  <OwnApplicationRow application={application} />
+
+        {isLoading ? (
+          <Stack justifyContent="center" alignItems="center">
+            <CircularProgress />
+          </Stack>
+        ) : (
+          <TableContainer component={Paper}>
+            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+              <TableHead>
+                <TableRow>
+                  <TableCell>Opportunity's Name</TableCell>
+                  <TableCell align="right">Created At</TableCell>
+                  <TableCell align="right">Application's Status</TableCell>
+                  <TableCell align="right">Action</TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+              </TableHead>
+              <TableBody>
+                {applicationList?.map((application) => (
+                  <TableRow
+                    key={application._id}
+                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                  >
+                    <OwnApplicationRow application={application} />
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        )}
       </Card>
     </div>
   );

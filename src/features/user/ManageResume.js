@@ -18,12 +18,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { JobRow } from "features/job/JobRow";
 import SearchInput from "components/SearchInput";
 import { Box } from "@mui/system";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const ManageResume = () => {
   const [filterName, setFilterName] = useState("");
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
-  const { allJobs, totalJobs } = useSelector((state) => state.job);
+  const { allJobs, totalJobs, isLoading } = useSelector((state) => state.job);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -84,30 +85,42 @@ const ManageResume = () => {
             onRowsPerPageChange={handleChangeRowsPerPage}
           />
         </Stack>
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell>Job's Name</TableCell>
-                <TableCell align="right">Created At</TableCell>
-                <TableCell align="right">Status</TableCell>
-                {/* <TableCell align="right">Detailed Page</TableCell> */}
-                <TableCell align="right">Edit Job </TableCell>
-                <TableCell align="right">Delete Job</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {allJobs.map((job) => (
-                <TableRow
-                  key={job._id}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
-                  <JobRow job={job} />
+
+        {isLoading ? (
+          <Stack
+            justifyContent="center"
+            alignItems="center"
+            sx={{ m: "1rem auto" }}
+          >
+            <CircularProgress />
+          </Stack>
+        ) : (
+          <TableContainer component={Paper}>
+            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+              <TableHead>
+                <TableRow>
+                  <TableCell>Job's Name</TableCell>
+                  <TableCell align="right">Created At</TableCell>
+                  <TableCell align="right">Status</TableCell>
+                  {/* <TableCell align="right">Detailed Page</TableCell> */}
+                  <TableCell align="right">Edit Job </TableCell>
+                  <TableCell align="right">Delete Job</TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+              </TableHead>
+              <TableBody>
+                {allJobs.map((job) => (
+                  <TableRow
+                    key={job._id}
+                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                  >
+                    <JobRow job={job} />
+                  </TableRow>
+                ))}
+              </TableBody>
+              )
+            </Table>
+          </TableContainer>
+        )}
       </Card>
     </div>
   );

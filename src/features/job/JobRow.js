@@ -2,16 +2,19 @@ import { Button, Chip, TableCell } from "@mui/material";
 import React from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditTwoToneIcon from "@mui/icons-material/EditTwoTone";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deleteJob } from "./jobSlice";
 import { useNavigate } from "react-router-dom";
 import { fDateTime } from "utils/formatTime";
+import { Stack } from "@mui/material";
 
 import ArrowRightAltOutlinedIcon from "@mui/icons-material/ArrowRightAltOutlined";
+import CircularProgress from "@mui/material/CircularProgress";
 
 export const JobRow = ({ job }) => {
   const navigate = useNavigate();
 
+  const { isLoading } = useSelector((state) => state.job);
   const dispatch = useDispatch();
 
   const handleDeleteJob = (jobId) => {

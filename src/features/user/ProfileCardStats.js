@@ -9,9 +9,9 @@ import {
   Typography,
 } from "@mui/material";
 import RatingList from "features/rating/RatingList";
+import { useSelector } from "react-redux";
 
 import React, { useState } from "react";
-
 const style = {
   position: "absolute",
   top: "50%",
@@ -90,10 +90,11 @@ const ProfileCardStats = ({ user }) => {
               id="modal-modal-title"
               variant="h6"
               component="h2"
-              sx={{ textAlign: "center" }}
+              sx={{ textAlign: "center", mb: "1rem" }}
             >
               Rating List
             </Typography>
+
             <RatingList user={user} type="employee" />
           </Box>
         </Modal>
@@ -138,10 +139,11 @@ const ProfileCardStats = ({ user }) => {
               id="modal-modal-title"
               variant="h6"
               component="h2"
-              sx={{ textAlign: "center" }}
+              sx={{ textAlign: "center", mb: "1rem" }}
             >
               Rating List
             </Typography>
+
             <RatingList user={user} type="employer" />
           </Box>
         </Modal>
